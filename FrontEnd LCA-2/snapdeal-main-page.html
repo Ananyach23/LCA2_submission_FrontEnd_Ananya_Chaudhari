@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Snapdeal Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+</style>
+</head>
+<body>
+<header>
+  <!-- Overlay -->
+  <div id="overlay"></div>
+  
+  <!-- Signup Popup -->
+  <div id="signup-popup" class="popup" style="display: none;">
+    <!-- Step 1 -->
+    <div class="form-step" id="step1">
+      <h5 style="font-size: 20px; display: flex; align-items: center; display:block; margin-top:10px">
+        <a href="snapdeal-main-page.html" style="text-decoration: none; color: black; display: flex; align-items: center;">
+          <i class="material-icons" id="back" style="font-size: 24px;">arrow_back_ios</i>
+          <span>Back</span>
+        </a>
+      </h5>
+      <div style="margin-top: 5px;">
+        <h2 style="font-size:32px; color:#505050; font-weight:bold">Sign up</h2>
+        <p style="font-size:20px; color:#505050">Create an account on snapdeal.</p>
+        <input type="email" class="signup" id="email" placeholder="Mobile no./ Email">
+        <input type="text" class="signup" id="otp" placeholder="OTP"><br>
+        <a href style="font-size: 18px">or Signup using Google</a><br><br>
+        <button class="signup-btn" onclick="nextStep()">Proceed</button><br>
+    </div>
+      <a href style="font-size:18px; color: #464644; margin-top:30px; display: inline-block">Already a user? Login</a><br>
+    </div>
+    <!-- Step 2 -->
+    <div class="form-step" id="step2" style="display: none;">
+      <h5 style="font-size: 20px; font-weight: bold; display: flex; align-items: center;display:block; margin-top:10px">
+        <button type="button" onclick="goToStep1()" style="background: none; border: none; text-decoration: none; color: black; display: flex; align-items: center; cursor: pointer; font-size: 20px; font-weight: bold;">
+          <i class="material-icons" style="font-size: 24px">arrow_back_ios</i>
+          <span style="font-size: 20px; font-weight: bold;">Back</span>
+        </button>
+      </h5>
+      <div style="margin-top: 5px;">
+      <h2 style="font-size:32px; color:#505050; font-weight:bold; margin-top:-30px">Sign up</h2>
+      <p style="font-size:20px; color:#505050">Create an account on snapdeal.</p>
+      <input type="text" class="signup" id="name" placeholder="Neha Rao" />
+      <input type="email" class="signup" id="address" placeholder="neharao23@gmail.com" />
+      <input type="tel" class="signup" id="mobile" placeholder="+91|mobile number" />
+      <input type="password" class="signup" id="password" placeholder="Password" />
+      <p style="font-size:13px; color: #464646;">Password should have minimum 6 characters, atleast 1 numeric and 1 alphabet</p>
+      <input type="text" class="signup" id="date" onfocus="this.type='date'" onblur="this.type='text'" placeholder="Date of Birth"><br>
+      <button class="signup-btn" id="proceed-btn" onclick="completeSignup()">Proceed</button>
+      <p style="font-size:13px; color: #464646;">By registering, I agree to Terms & Conditions</p><br>
+      <a href style="font-size: 18px; margin-top:30px; display: inline-block">or Signup using Google</a>
+      </div>
+    </div>
+  
+    <!-- Step 3 -->
+    <div class="form-step" id="step3" style="display: none;">
+      <h2 style="font-size:40px; color:#505050; font-weight:bold; margin-top:100px">Sign Up Successful!</h2>
+      <p style="font-size:32px; color:#E30047">Continue Shopping!</p>
+    </div>
+  </div>
+<div class="one">
+<nav class="one">
+<ul>
+<li><a class="one" href="#">Impact@snapdeal</a></li>
+<li><a class="one" href="#">Sell on Snapdeal</a></li>
+<li><a class="one" href="#">Download App</a></li>
+<li><a class="one" href="#"><b>Help Center</b></a></li>
+</ul>
+</nav>
+</div>
+<div class="two">
+<nav class="two">
+<ul>
+<li><a class="two" href="snapdeal-main-page.html"><img class="img1" src="snapdeal-icon.jpg"></a></li>
+<li>
+  <a class="nav-icons" href="javascript:void(0);" id="location-toggle">
+    <i class="material-icons" id="location-icon">location_on</i>
+    <span style="margin-left:15px; font-size:20px;">Location</span>
+  </a>
+</li>
+<li><div class="search-container">
+<div class="dropdown-section">
+      <select class="category-dropdown">
+        <option>All</option>
+        <option>Women</option>
+        <option>Men</option>
+        <option>Kids</option>
+      </select>
+    </div>
+    <div class="search-icon-section">
+      <i class="material-icons">search</i>
+    </div>    
+    <input type="text" id="searchInput" class="search-input" placeholder="Search for kurti set">
+    <div class="mic-section">
+     <a class="nav-icons"><i class="material-icons" id="mic-icon" style="margin-left:17px;">mic</i></a>
+    </div>    
+  </div></li>
+  <li>
+  <div class="lang-wrapper">
+    <img id="flag-img" src="indflag.jpg" alt="Flag" class="flag-img">
+    <select id="lang-select" class="lang-select">
+      <option value="in" data-flag="https://flagcdn.com/w40/in.png">IN/EN</option>
+      <option value="us" data-flag="https://flagcdn.com/w40/us.png">US/EN</option>
+      <option value="fr" data-flag="https://flagcdn.com/w40/fr.png">FR/FR</option>
+      <option value="de" data-flag="https://flagcdn.com/w40/de.png">DE/DE</option>
+    </select>
+  </div></li>
+<li>
+  <a class="nav-icons" href="#profile" id="login-trigger">
+    <i class="material-icons" id="profile-icon">person</i>
+    <span style="margin-left:15px; font-size:20px;">Login</span>
+  </a>
+</li>
+<li>
+  <a class="nav-icons" href="#shoppingcart">
+    <i class="material-icons" id="shopping-cart-icon">shopping_cart</i>
+    <span style="margin-left:15px; font-size:20px;">Cart</span>
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+<div class="three">
+<nav class="three">
+<ul>
+<li><a href="snapdeal-main-page.html"><img src="shop-now.jpg" alt="shop-now"><span>Shop now</span></a></li>
+<li class="dropdown-parent"><a href="#" class="hover-trigger">
+<img src="women.jpg" alt="women" class="women"><span>Women</span></a>
+<div class="bottom-bar"></div>
+<div class="hover-bridge"></div>
+<div class="dropdown">
+<div class="dropdown-inner">
+<div class="dropdown-left">
+  <div class="clothing-wrapper" style="color: #616161">
+    <a class="clothing-title" href="women-clothing.html" style="font-size:24px; cursor:pointer">Clothing</a>
+    <div class="dropdown-right">
+      <p style="color:#616161"><i>People also look for</i></p>
+      <p>Maternity Wear</p>
+      <p>Plus Size Clothing</p>
+      <p>Seasonal Wear</p>
+      <p>Specialty Clothing</p>
+      <p>Ethnic and Cultural Wear</p>
+    </div>
+  </div>
+<div class="yes">
+<p style="color:#616161">Footwear</p>
+<p style="color:#616161">Accessories</p>
+<p style="color:#616161">Beauty and Personal Care</p>
+<p style="color:#616161">Jewelry and Watches</p>
+<p style="color:#616161">Health and Wellness</p></div>
+</div>
+</div>
+</div>  
+</li>
+<li><a href="#"><img src="men.jpg" alt="men"><span>Men</span></a></li>
+<li><a href="#"><img src="kids.jpg" alt="kids"><span>Kids</span></a></li>
+<li><a href="#"><img src="home.jpg" alt="home"><span>Home</span></a></li>
+<li><a href="#"><img src="electronics.jpg" alt="electronics"><span>Electronics</span></a></li>
+<li><a href="#"><img src="hobbies.jpg" alt="hobbies"><span>Hobbies</span></a></li>
+<li><a href="#"><img src="gift-store.jpg" alt="gift-store"><span>Gift Store</span></a></li>
+</ul>
+</nav>
+</div>
+</header>
+<div class="four" style="position: relative; margin-top: 265px; width: 100%; height: 325px; background-color: #FBC877; max-width:1532px; text-align: center;">
+<img id="adImage" src="ad-image.jpg" style="width: 1016px; height: 325px; object-fit: contain; display: inline-block; margin-right: 0;">
+<img src="qrcode-img.jpg" style="position: absolute; bottom: 20px; right: 50px; width: 172px; height: 63px;">
+<button class="arrow left">&#10094;</button>
+<button class="arrow right">&#10095;</button>
+<div class="dots">
+  <span class="dot active"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+</div>
+<br>
+<div class="five">
+  <div class="deals-header">
+    <h2>Deals of the Day</h2>
+    <div class="timer">13:25:45 Hrs Left</div>
+    <h5 class="one">See all</h5>
+  </div>
+
+  <div class="deals-grid" id="productList">
+    <div class="deal-card-container">
+    <div class="deal-card">
+      <span class="rating"><i class="material-icons" id="star">star</i> 4.2</span>
+      <span class="wishlist-icon"><i class="material-icons" id="favorite">favorite_border</i></span>
+      <img src="mixer-grinder.jpg" alt="Mixer">
+      <div class="info">
+        <p class="title">Pigeon Mixer Grinder</p>
+        <p class="price"><s style="color:#E40046">Rs. 7,999</s> Rs. 4,099</p>
+      </div>
+      </div>
+      <button class="view-more">View more</button>
+    </div>
+
+    <div class="deal-card-container">
+    <div class="deal-card">
+      <span class="rating"><i class="material-icons" id="star">star</i> 4.1</span>
+      <span class="wishlist-icon"><i class="material-icons" id="favorite">favorite_border</i></span>
+      <img src="headphones.jpg" alt="Headphones">
+      <div class="info">
+        <p class="title">Boat Headphones</p>
+        <p class="price"><s style="color:#E40046">Rs. 1,599</s> Rs. 1,299</p>
+      </div>
+    </div>
+    <button class="view-more">View more</button>
+  </div>
+
+  <div class="deal-card-container">
+  <div class="deal-card">
+      <span class="rating"><i class="material-icons" id="star">star</i> 4.0</span>
+      <span class="wishlist-icon"><i class="material-icons" id="favorite">favorite_border</i></span>
+      <img src="shoes1.jpg" alt="Shoes">
+      <div class="info">
+        <p class="title">Puma Shoes</p>
+        <p class="price"><s style="color:#E40046">Rs. 1,599</s> Rs. 1,299</p>
+      </div>
+    </div>
+    <button class="view-more">View more</button>
+  </div>
+
+  <div class="deal-card-container"> 
+  <div class="deal-card">
+      <span class="rating"><i class="material-icons" id="star">star</i> 3.9</span>
+      <span class="wishlist-icon"><i class="material-icons" id="favorite">favorite_border</i></span>
+      <img src="mobile.jpg" alt="Mobile">
+      <div class="info">
+        <p class="title">One Plus Mobile</p>
+        <p class="price"><s style="color:#E40046">Rs. 35,999</s> Rs. 30,000</p>
+      </div>
+    </div>
+    <button class="view-more">View more</button>
+  </div>
+
+  <div class="deal-card-container">
+  <div class="deal-card">
+      <span class="rating"><i class="material-icons" id="star">star</i> 4.3</span>
+      <span class="wishlist-icon"><i class="material-icons" id="favorite">favorite_border</i></span>
+      <img src="tshirt.jpg" alt="T-Shirt">
+      <div class="info">
+        <p class="title">Men's T-Shirt</p>
+        <p class="price"><s style="color:#E40046">Rs.649</s> Rs. 299</p>
+        </div>
+        </div>
+        <button class="view-more">View more</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="five">
+    <div class="deals-header">
+      <h2>From your Wishlist</h2>
+      <h5 class="one">See all</h5>
+    </div>
+    <div id="messageArea"></div>
+    <div class="deals-grid" id="productList">
+      <div class="deal-card-container">
+      <div class="deal-card">
+        <span class="rating"><i class="material-icons" id="star">star</i> 4.2</span>
+        <span class="wishlist-icon"><i class="material-icons" id="favorite-fill">favorite</i></span>
+        <img src="socks.jpg" alt="Socks">
+        <div class="info">
+          <p class="title">Kids Socks</p>
+          <p class="price">Rs. 649</p>
+        </div>
+        </div>
+        <button class="view-more">View more</button>
+      </div>
+  
+      <div class="deal-card-container">
+      <div class="deal-card">
+        <span class="rating"><i class="material-icons" id="star">star</i> 4.1</span>
+        <span class="wishlist-icon"><i class="material-icons" id="favorite-fill">favorite</i></span>
+        <img src="book.jpg" alt="Book" style="border-radius: 0px; width: 147.31px; height: 168.85px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); object-fit: contain;">
+        <div class="info">
+          <p class="title">Ramayana Book</p>
+          <p class="price">Rs. 599</p>
+        </div>
+      </div>
+      <button class="view-more">View more</button>
+    </div>
+  
+    <div class="deal-card-container">
+    <div class="deal-card">
+        <span class="rating"><i class="material-icons" id="star">star</i> 4.0</span>
+        <span class="wishlist-icon"><i class="material-icons" id="favorite-fill">favorite</i></span>
+        <img src="shoes2.jpg" alt="Shoes">
+        <div class="info">
+          <p class="title">Nike Shoes</p>
+          <p class="price">Rs. 1,599</p>
+        </div>
+      </div>
+      <button class="view-more">View more</button>
+    </div>
+  
+    <div class="deal-card-container"> 
+    <div class="deal-card">
+        <span class="rating"><i class="material-icons" id="star">star</i> 3.9</span>
+        <span class="wishlist-icon"><i class="material-icons" id="favorite-fill">favorite</i></span>
+        <img src="hair-dryer.jpg" alt="Hair Dryer">
+        <div class="info">
+          <p class="title">Hair Dryer</p>
+          <p class="price">Rs. 20,000</p>
+        </div>
+      </div>
+      <button class="view-more">View more</button>
+    </div>
+  
+    <div class="deal-card-container">
+    <div class="deal-card">
+        <span class="rating"><i class="material-icons" id="star">star</i> 4.3</span>
+        <span class="wishlist-icon"><i class="material-icons" id="favorite-fill">favorite</i></span>
+        <img src="jeans.jpg" alt="Jeans">
+        <div class="info">
+          <p class="title">Jeans</p>
+          <p class="price">Rs. 1,999</p>
+          </div>
+          </div>
+          <button class="view-more">View more</button>
+        </div>
+      </div>
+    </div>
+<div class="six desktop-only"><img src="ad-image2.png" id="adImage2"></div>
+<div class="seven desktop-only"><img src="ad-image3.jpg" id="adImage3"></div>
+<br><br>
+<div class="eight desktop-only"><img src="footer-img.jpg" id="footer-img"></div>
+<footer class="desktop-only">
+<div class="footer-container">
+<div class="footer-columns">
+<div class="footer-section" style="margin-top: -18px; line-height: 25px;">
+<h4>POLICY INFO</h4>
+<p><a href="#">Privacy Policy</a></p>
+<p><a href="#">Terms of Sale</a></p>
+<p><a href="#">Terms of Use</a></p>
+<p><a href="#">Report Abuse & Takedown</a></p>
+<p><a href="#">Policy</a></p>
+<p><a href="#">Know Your BIS Standard</a></p>
+<p><a href="#">Products Under Compulsory</a></p>
+<p><a href="#">BIS Certification</a></p>
+</div>
+<div class="footer-section" style="line-height: 25px;">
+<h4>COMPANY</h4>
+<p><a href="#">Impact@Snapdeal</a></p>
+<p><a href="#">Careers</a></p>
+<p><a href="#">Blog</a></p>
+<p><a href="#">Sitemap</a></p>
+<p><a href="#">Contact Us</a></p>
+</div>
+<div class="footer-section" style="line-height: 25px;">
+<h4>SNAPDEAL BUSINESS</h4>
+<p><a href="#">Shopping App</a></p>
+<p><a href="#">Sell on Snapdeal</a></p>
+<p><a href="#">Media Enquiries</a></p>
+</div>
+<div class="footer-section" style="line-height: 25px;">
+<h4>POPULAR LINKS</h4>
+<p><a href="#">Lehenga</a></p>
+<p><a href="#">Kid's Clothing</a></p>
+<p><a href="#">Sarees</a></p>
+<p><a href="#">Winter Wear</a></p>
+</div>
+<div class="footer-section" style="line-height: 25px;">
+<h4>SUBSCRIBE</h4>
+<p>Register now to get updates on promotions and coupons.</p>
+<p>Or <a class="download" href="#">Download App</a></p>
+</div>
+</div>
+<div class="footer-info">
+<p><b>COMPANY</b><br>
+    Impact@Snapdeal<br>
+    Snapdeal is India's leading pure-play value Ecommerce platform. Founded in 2010 by Kunal Bahl and Rohit Bansal, Snapdeal is one of the top four online lifestyle shopping destinations of India. Snapdeal brings together a wide assortment of good quality and value- priced merchandise on its platform. Snapdeal's vision is to enable the shoppers of Bharat to experience the joy of living their aspirations through reliable, value-for-money shopping. With a personalized, multilingual interface and cutting edge technology, Snapdeal has simplified the shopping experience for its value-conscious buyers by showcasing the most relevant products- products that are a good functional fit with their needs and of a quality that lasts- thereby delivering true value to its customers. With its commitment to high service standards, Snapdeal suppliers operate under a well structured ecosystem that enables them to offer great quality products at affordable prices. With majority of the value-seeking, middle-income, price-conscious buyers coming from the non-metros, Snapdeal’s logistics networks powered by third party logistics cover more than 96% of India’s pin codes enabling order deliveries to more than 2500 towns and cities and expanding. Further, Snapdeal's mission is to become India’s value lifestyle omni-channel leader. We are excited about continuing to build a complete ecosystem around value commerce, where we can serve Bharat consumers wherever they are on their offline to online shopping journey. Snapdeal is part of the AceVector Group and one of India’s best-known e-commerce companies with an exclusive focus on the value segment.</p>
+<div class="info-links">
+<p><a href="#"><b>Blog</b></a><br>
+<p><a href="#"><b>Visit Sitemap</b></a><br>
+<p><a href="#"><b>Contact Us</b></a><br>
+</div>
+</div>
+<div class="footer-bottom">
+<p><strong>CONNECT</strong></p>
+<div class="social-icons">
+<a href="#"><img src="social-media-icons.png" style="width:183.33px; height:29.33px; gap:22"></a>
+</div>
+</div>
+<div class="final-footer">
+    Copyright © 2021, Snapdeal Limited. All Rights Reserved
+</div>
+</div>
+</footer>
+<script src="scripts/main.js"></script>
+<script src="scripts/main-two.js"></script>
+</body>
+</html>
